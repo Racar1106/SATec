@@ -8,15 +8,8 @@ public class ControladorDetalleServicio {
     private ArrayList<DetalleServicio> detallesServicios = new ArrayList<>();
 
     public void crearDetalleServicio(Servicio s, int cantidad){
-        for(DetalleServicio detalleServicio:detallesServicios){
-            if(detalleServicio.getServicio()==s){
-                detalleServicio.setCantidad(cantidad);
-            }
-            else{
-                DetalleServicio ds = new DetalleServicio(s, cantidad);
-                detallesServicios.add(ds);
-            }
-        }
+        DetalleServicio ds = new DetalleServicio(s, cantidad);
+        detallesServicios.add(ds);
     }
 
     public double calcularTotal(Servicio s, int cantidad){
