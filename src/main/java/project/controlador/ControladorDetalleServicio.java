@@ -9,14 +9,13 @@ public class ControladorDetalleServicio {
 
     public void crearDetalleServicio(Servicio s, int cantidad){
         for(DetalleServicio detalleServicio:detallesServicios){
-            if(detalleServicio.getServicio()==s){
-                detalleServicio.setCantidad(cantidad);
-            }
-            else{
-                DetalleServicio ds = new DetalleServicio(s, cantidad);
-                detallesServicios.add(ds);
+            if(detalleServicio.getServicio().equals(s)){
+                detalleServicio.setCantidad(detalleServicio.getCantidad()+cantidad);
+                return;
             }
         }
+        DetalleServicio ds = new DetalleServicio(s, cantidad);
+        detallesServicios.add(ds);
     }
 
     public double calcularTotal(Servicio s, int cantidad){
