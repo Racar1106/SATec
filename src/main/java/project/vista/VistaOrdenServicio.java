@@ -61,8 +61,6 @@ public class VistaOrdenServicio {
         }
         OrdenServicio ordenServicio = controlador.generarOrdenServicio(cliente, fecha, vehículo, controladorDS.getDetalleServicios());
         controlador.valorTotal(ordenServicio);
-        controladorDS.clearDetalleServicio();
-        scanner.close();
     }
 
     public void mostrarListaServicio(){
