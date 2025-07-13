@@ -22,12 +22,21 @@ public class ControladorReporteIngresoServicio {
         for (OrdenServicio orden : controladorOS.getListaOrdenServicios()) {
             if (orden.getFecha().getYear() == año && orden.getFecha().getMonthValue() == mes) {
                 for(DetalleServicio detalleServicio : orden.getListaDetalleServicio()){
-                    ordenesFiltradas.add(detalleServicio);
-                }
+                    boolean encontrado = false;
+                    for(DetalleServicio ds:ordenesFiltradas){
+                        if(ds.getServicio().getNombre().equals(detalleServicio.getServicio().getNombre())){
+                            ds.setCantidad(ds.getCantidad()+detalleServicio.getCantidad());
+                            encontrado = true;
+                            break;
+                        }
+                    }
+                    if(!encontrado){
+                        ordenesFiltradas.add(detalleServicio);
+                    }
+                } 
             }
         }
         return ordenesFiltradas;
-    }
 
     public double getTotalServicio(Servicio servicio, int cantidad){
         return controladorDS.calcularTotal(servicio, cantidad);
