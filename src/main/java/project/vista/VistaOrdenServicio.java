@@ -21,6 +21,7 @@ public class VistaOrdenServicio {
 
     public void registrarOrden(Scanner scanner){
         scanner.nextLine();
+        controladorDS.clearDetalleServicio();
         System.out.println("=== Generar orden de servicios ===");
         mostrarClientes();
         System.out.println("Ingrese la identificación del cliente: ");
@@ -62,7 +63,6 @@ public class VistaOrdenServicio {
         OrdenServicio ordenServicio = controlador.generarOrdenServicio(cliente, fecha, vehículo, controladorDS.getDetalleServicios());
         controlador.valorTotal(ordenServicio);
         controladorDS.clearDetalleServicio();
-        scanner.close();
     }
 
     public void mostrarListaServicio(){
