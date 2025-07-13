@@ -13,7 +13,7 @@ public class OrdenServicio {
         this.cliente = c;
         this.fecha = f;
         this.vehículo = v;
-        this.detallesServicios = dS;
+        this.detallesServicios = new ArrayList<>(dS);
     }
 
     public Cliente getCliente(){
