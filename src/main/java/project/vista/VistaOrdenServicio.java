@@ -39,24 +39,21 @@ public class VistaOrdenServicio {
         Vehículo vehículo = controlador.crearVehículo(placa, tipoVehículo);
         Cliente cliente = controlador.buscarCliente(id);
 
-        int opción = 0;
+        int codigo = 0;
         mostrarListaServicio();
-        while(opción!=-1){
+        while(codigo!=-1){
             System.out.println("Ingrese el código del servicio: ");
-            int codigo = scanner.nextInt();
-            if(codigo==-1){
-                opción = -1;
-                return;
-            }
-            
-            System.out.println("Ingrese la cantidad: ");
-            int cantidad = scanner.nextInt();
+            codigo = scanner.nextInt();
 
-            if(controlador.buscarServicio(codigo)!=null){
-                Servicio s = controlador.buscarServicio(codigo);
-                controladorDS.crearDetalleServicio(s, cantidad);
-            } else{
-                System.out.println("El código del servicio que ingresó no existe");
+            if(codigo!=-1){
+                System.out.println("Ingrese la cantidad: ");
+                int cantidad = scanner.nextInt();
+                if(controlador.buscarServicio(codigo)!=null){
+                    Servicio s = controlador.buscarServicio(codigo);
+                    controladorDS.crearDetalleServicio(s, cantidad);
+                } else{
+                    System.out.println("El código del servicio que ingresó no existe");
+                }
             }
         }
         OrdenServicio ordenServicio = controlador.generarOrdenServicio(cliente, fecha, vehículo, controladorDS.getDetalleServicios());
